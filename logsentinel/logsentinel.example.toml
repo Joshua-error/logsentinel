@@ -8,6 +8,10 @@ allowlist = ["192.0.2.10/32"]
 threshold = 5            # failed SSH logins from one IP ...
 window_seconds = 60      # ... within this many seconds
 
+[slow_brute_force]       # LS-005
+threshold = 8            # failed SSH logins from one IP (outside LS-001 bursts) ...
+window_seconds = 21600   # ... within 6 hours
+
 [success_after_failures] # LS-002
 min_failures = 3         # failures from the same IP ...
 lookback_seconds = 600   # ... in the 10 minutes before a successful login

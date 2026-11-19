@@ -19,6 +19,12 @@ class BruteForceConfig:
 
 
 @dataclass
+class SlowBruteForceConfig:
+    threshold: int = 8              # failed logins from one IP (not already in an LS-001 burst) ...
+    window_seconds: int = 6 * 3600  # ... within this many seconds
+
+
+@dataclass
 class SuccessAfterFailuresConfig:
     min_failures: int = 3       # failures from the same IP ...
     lookback_seconds: int = 600 # ... in this window before a successful login
@@ -41,6 +47,7 @@ class WebScanConfig:
 class Config:
     allowlist: list[str] = field(default_factory=list)  # IPs / CIDRs never alerted on
     brute_force: BruteForceConfig = field(default_factory=BruteForceConfig)
+    slow_brute_force: SlowBruteForceConfig = field(default_factory=SlowBruteForceConfig)
     success_after_failures: SuccessAfterFailuresConfig = field(default_factory=SuccessAfterFailuresConfig)
     port_scan: PortScanConfig = field(default_factory=PortScanConfig)
     web_scan: WebScanConfig = field(default_factory=WebScanConfig)

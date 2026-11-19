@@ -65,6 +65,7 @@ EXPECTED = {
     ("LS-002", "198.51.100.23"),  # ... that succeeded
     ("LS-003", "203.0.113.45"),   # port scan before the brute force
     ("LS-004", "198.51.100.99"),  # gobuster directory scan
+    ("LS-005", "203.0.113.77"),   # low-and-slow brute force (1 try / ~12 min)
 }
 
 
@@ -79,8 +80,8 @@ def test_end_to_end_sample_logs(sample_dir, tmp_path, capsys):
     data = json.loads((tmp_path / "findings.json").read_text())
     found = {(f["rule_id"], f["src_ip"]) for f in data["findings"]}
     assert found == EXPECTED
-    # benign activity and the low-and-slow attacker must not alert
-    assert not {"192.0.2.11", "192.0.2.27", "203.0.113.77"} & {ip for _, ip in found}
+    # benign activity (a mistyped password, a few broken links) must not alert
+    assert not {"192.0.2.11", "192.0.2.27"} & {ip for _, ip in found}
     assert (tmp_path / "report.html").exists() and (tmp_path / "findings.csv").exists()
     assert "Attack chains" in capsys.readouterr().out
 

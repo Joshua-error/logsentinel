@@ -172,6 +172,46 @@ def detect_ssh_brute_force(events: Sequence[Event], config: Config) -> list[Find
     return findings
 
 
+def detect_slow_brute_force(events: Sequence[Event], config: Config) -> list[Finding]:
+    """LS-005: failed SSH logins spread out to stay under LS-001's rate threshold.
+
+    Failures that already belong to an LS-001 burst are excluded first, so a fast
+    attacker produces one LS-001 finding rather than an LS-001 and an LS-005 for
+    the same attempts.
+    """
+    fast = config.brute_force
+    cfg = config.slow_brute_force
+    findings = []
+    for ip, failures in group_by_ip(events, lambda e: e.kind == "ssh_failed").items():
+        in_fast_burst = {
+            id(e)
+            for burst in find_bursts(failures, fast.threshold, timedelta(seconds=fast.window_seconds))
+            for e in burst
+        }
+        remaining = [e for e in failures if id(e) not in in_fast_burst]
+        for burst in find_bursts(remaining, cfg.threshold, timedelta(seconds=cfg.window_seconds)):
+            users = Counter(e.user for e in burst)
+            span = burst[-1].timestamp - burst[0].timestamp
+            avg_gap = span / (len(burst) - 1) if len(burst) > 1 else timedelta(0)
+            findings.append(Finding(
+                rule_id="LS-005",
+                title="Low-and-slow SSH brute-force attempt",
+                severity="medium",
+                technique=PASSWORD_GUESSING,
+                src_ip=ip,
+                first_seen=burst[0].timestamp,
+                last_seen=burst[-1].timestamp,
+                count=len(burst),
+                description=(
+                    f"{len(burst)} failed SSH logins from {ip} over {humanize(span)} "
+                    f"(about one every {humanize(avg_gap)}, below the brute-force rate threshold) "
+                    f"against {len(users)} account(s): {_sample(u for u, _ in users.most_common())}."
+                ),
+                evidence=_evidence(burst),
+            ))
+    return findings
+
+
 def detect_success_after_failures(events: Sequence[Event], config: Config) -> list[Finding]:
     """LS-002: a successful SSH login from an IP that was just failing to log in."""
     cfg = config.success_after_failures
@@ -270,7 +310,13 @@ def detect_web_scan(events: Sequence[Event], config: Config) -> list[Finding]:
     return findings
 
 
-RULES = (detect_ssh_brute_force, detect_success_after_failures, detect_port_scan, detect_web_scan)
+RULES = (
+    detect_ssh_brute_force,
+    detect_slow_brute_force,
+    detect_success_after_failures,
+    detect_port_scan,
+    detect_web_scan,
+)
 
 
 def is_allowlisted(ip: str, networks: Sequence) -> bool:

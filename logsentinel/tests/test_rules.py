@@ -7,6 +7,7 @@ from logsentinel.config import Config
 from logsentinel.rules import (
     correlate_by_ip,
     detect_port_scan,
+    detect_slow_brute_force,
     detect_ssh_brute_force,
     detect_success_after_failures,
     detect_web_scan,
@@ -53,7 +54,7 @@ def test_brute_force_below_threshold_is_quiet():
 
 
 def test_brute_force_slow_attack_is_not_detected():
-    # Documented limitation: 1 attempt every 2 minutes stays under the rate rule.
+    # 1 attempt every 2 minutes stays under the rate rule (LS-005 covers this case).
     events = [ev(i * 120, user="root") for i in range(30)]
     assert detect_ssh_brute_force(events, Config()) == []
 
@@ -61,6 +62,53 @@ def test_brute_force_slow_attack_is_not_detected():
 def test_brute_force_is_per_ip():
     events = [ev(i, ip=f"192.0.2.{i}", user="root") for i in range(10)]
     assert detect_ssh_brute_force(events, Config()) == []
+
+
+# --- LS-005 slow brute force ------------------------------------------------ #
+
+def test_slow_brute_force_detected():
+    # 1 attempt every 12 minutes: invisible to LS-001, caught by LS-005.
+    events = [ev(i * 720, user="root") for i in range(8)]
+    assert detect_ssh_brute_force(events, Config()) == []
+    [f] = detect_slow_brute_force(events, Config())
+    assert f.rule_id == "LS-005" and f.technique.id == "T1110.001" and f.count == 8
+    assert "every 12m 0s" in f.description
+
+
+def test_slow_brute_force_below_threshold_is_quiet():
+    events = [ev(i * 720, user="root") for i in range(7)]
+    assert detect_slow_brute_force(events, Config()) == []
+
+
+def test_slow_brute_force_outside_window_is_quiet():
+    # 8 failures spread over a week, one per day: too sparse for the 6 h window.
+    events = [ev(i * 86400, user="root") for i in range(8)]
+    assert detect_slow_brute_force(events, Config()) == []
+
+
+def test_slow_brute_force_does_not_duplicate_fast_burst():
+    events = [ev(i, user="root") for i in range(30)]  # fast attack, already LS-001
+    assert len(detect_ssh_brute_force(events, Config())) == 1
+    assert detect_slow_brute_force(events, Config()) == []
+
+
+def test_slow_brute_force_counts_attempts_outside_fast_burst():
+    burst = [ev(i, user="root") for i in range(10)]                # LS-001 burst
+    trickle = [ev(3600 + i * 900, user="admin") for i in range(8)]  # then slow tries
+    [f] = detect_slow_brute_force(burst + trickle, Config())
+    assert f.count == 8 and "admin" in f.description
+
+
+def test_slow_brute_force_is_per_ip():
+    events = [ev(i * 720, ip=f"192.0.2.{i}", user="root") for i in range(20)]
+    assert detect_slow_brute_force(events, Config()) == []
+
+
+def test_slow_brute_force_threshold_configurable():
+    events = [ev(i * 720, user="root") for i in range(5)]
+    config = Config()
+    config.slow_brute_force.threshold = 5
+    assert len(detect_slow_brute_force(events, config)) == 1
 
 
 # --- LS-002 success after failures ------------------------------------------ #
