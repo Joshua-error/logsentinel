@@ -6,7 +6,7 @@ The day (18 Nov) contains normal activity plus four planted attack scenarios:
   02:14  203.0.113.45   SSH brute force against many users   -> LS-001
   03:41  198.51.100.23  SSH brute force on 'deploy' ...      -> LS-001
   03:44  198.51.100.23  ... followed by a successful login   -> LS-002
-  05:00  203.0.113.77   slow brute force, 1 try / ~12 min    -> NOT detected (documented limitation)
+  05:00  203.0.113.77   slow brute force, 1 try / ~12 min    -> LS-005 (LS-001 misses it)
   11:22  198.51.100.99  gobuster directory scan (web)        -> LS-004
 
 All IPs come from the RFC 5737 documentation ranges, so nothing here points at
@@ -95,7 +95,7 @@ def auth_lines() -> list[tuple[datetime, str]]:
     sshd(dt, f"Accepted password for deploy from 198.51.100.23 port {rng.randint(30000, 65000)} ssh2", p)
     sshd(dt, "pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)", p)
 
-    # Scenario C: low-and-slow brute force (below the rate threshold on purpose)
+    # Scenario C: low-and-slow brute force (below LS-001's rate threshold; caught by LS-005)
     dt = at(5, 0, 30)
     for _ in range(8):
         sshd(dt, f"Failed password for root from 203.0.113.77 port {rng.randint(30000, 65000)} ssh2")

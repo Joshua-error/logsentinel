@@ -6,12 +6,12 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 **A lightweight log-based intrusion detector.** LogSentinel reads Linux SSH, firewall and
-web server logs, detects brute-force attacks, port scans, compromised logins and web
+web server logs, detects brute-force attacks (fast and low-and-slow), port scans, compromised logins and web
 content-discovery scans, and maps every finding to a **MITRE ATT&CK** technique. It then links
 findings from the same attacker into an attack chain such as *Discovery → Credential Access*.
 
 It is a small, readable version of what a SOC analyst's SIEM rules do. It is written in pure
-Python with no dependencies and covered by 46 tests.
+Python with no dependencies and covered by 53 tests.
 
 ![LogSentinel HTML report](docs/report-screenshot.png)
 
@@ -37,13 +37,14 @@ Output:
 ```
 Parsed 700 lines -> 605 security events (95 skipped)
 
-5 finding(s):
+6 finding(s):
 
   SEVERITY  RULE    ATT&CK     SOURCE IP        FIRST SEEN           TITLE
   CRITICAL  LS-002  T1078      198.51.100.23    2026-11-18 03:41:10  Successful SSH login after repeated failures
   MEDIUM    LS-003  T1046      203.0.113.45     2026-11-18 02:10:00  Port scan
   MEDIUM    LS-001  T1110.001  203.0.113.45     2026-11-18 02:14:03  SSH brute-force attempt
   MEDIUM    LS-001  T1110.001  198.51.100.23    2026-11-18 03:41:10  SSH brute-force attempt
+  MEDIUM    LS-005  T1110.001  203.0.113.77     2026-11-18 05:00:30  Low-and-slow SSH brute-force attempt
   MEDIUM    LS-004  T1595.003  198.51.100.99    2026-11-18 11:22:04  Web content discovery scan
 
 Attack chains:
@@ -63,11 +64,16 @@ Open `reports/report.html` in a browser for the full report with evidence lines.
 | LS-002 | Compromised login | A successful login from an IP with ≥ 3 failures in the previous 10 min | [T1078](https://attack.mitre.org/techniques/T1078/) Valid Accounts | Critical |
 | LS-003 | Port scan | ≥ 10 *distinct* destination ports from one IP within 60 s | [T1046](https://attack.mitre.org/techniques/T1046/) Network Service Discovery | Medium |
 | LS-004 | Web directory brute force | ≥ 15 *distinct* URLs returning 401/403/404 from one IP within 120 s. Raised to Medium if the User-Agent names a known tool (gobuster, nikto, sqlmap…) | [T1595.003](https://attack.mitre.org/techniques/T1595/003/) Active Scanning: Wordlist Scanning | Low / Medium |
+| LS-005 | Low-and-slow SSH brute force | ≥ 8 failed logins from one IP within 6 h, not counting failures already reported by LS-001 | [T1110.001](https://attack.mitre.org/techniques/T1110/001/) Brute Force: Password Guessing | Medium |
 
 **Burst detection.** All rate rules share one O(n) sliding-window function (`find_bursts`).
 Overlapping windows are merged, so a 3-minute attack produces **one** finding, not 40.
 The port-scan and web-scan rules count *distinct* ports or paths, so a client
 retrying the same port 100 times is not reported as a scan.
+
+**Fast and slow brute force.** LS-001 catches bursts. LS-005 catches attackers who pace
+their guesses minutes apart to stay under that rate. LS-005 first removes failures that are
+already part of an LS-001 burst, so a fast attack gives one alert, not two.
 
 **Attack chains.** Findings that share a source IP are ordered in time and shown as a
 progression through ATT&CK tactics. In the sample data, `203.0.113.45` scans 60 ports and
@@ -81,7 +87,7 @@ flowchart LR
     F[ufw.log] --> P
     W[access.log] --> P
     C[config TOML] --> R
-    P --> R[rules.py<br/>LS-001..004 + allowlist]
+    P --> R[rules.py<br/>LS-001..005 + allowlist]
     R --> X[correlate_by_ip<br/>attack chains]
     R --> O[report.py]
     X --> O
@@ -99,7 +105,7 @@ logsentinel/
 └── cli.py       # argparse entry point
 sample_logs/     # synthetic day of logs with planted attacks (see below)
 scripts/generate_sample_logs.py
-tests/           # 46 pytest tests: parsers, every rule, report safety, end-to-end
+tests/           # 53 pytest tests: parsers, every rule, report safety, end-to-end
 ```
 
 ## Usage
@@ -147,7 +153,7 @@ these are detected:
 | 02:10 | 203.0.113.45 | SYN scan of 60 ports | LS-003 |
 | 02:14 | 203.0.113.45 | Brute force over 9 usernames | LS-001 |
 | 03:41 | 198.51.100.23 | Brute force on `deploy`, then **successful login** | LS-001 + LS-002 |
-| 05:00 | 203.0.113.77 | Low-and-slow brute force (1 try / ~12 min) | *Not detected (see limitations)* |
+| 05:00 | 203.0.113.77 | Low-and-slow brute force (1 try / ~12 min) | LS-005 |
 | 09:15 | 192.0.2.11 | Real user mistypes password twice, then logs in | No alert |
 | 11:22 | 198.51.100.99 | gobuster directory scan, 40 paths | LS-004 |
 | 14:02 | 192.0.2.27 | Visitor hits a few broken links | No alert |
@@ -165,8 +171,9 @@ CI runs the suite on Python 3.11, 3.12 and 3.13 and uploads the sample report as
 
 Knowing a detector's blind spots matters as much as its rules:
 
-- **Low-and-slow attacks evade rate rules.** The 05:00 attacker stays under 5 attempts per minute.
-  *Next:* a second, long-window rule (for example ≥ 20 failures in 24 h), or per-IP baselining.
+- **Very slow attacks still evade LS-005.** LS-005 catches the 05:00 attacker (8 tries in about 1.5 h),
+  but an attacker making one guess an hour stays under 8 in 6 h. Lowering the threshold
+  increases false positives from real users. *Next:* per-IP baselining, or a reputation feed.
 - **Distributed brute force** (many IPs, one account each) isn't correlated.
   *Next:* group failures by target username as well as by source IP.
 - **Batch, not real time.** *Next:* a `--follow` mode that tails logs, and output to syslog or a webhook.
