@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "logsentinel"
+version = "0.1.0"
+description = "Log-based intrusion detector for SSH, firewall and web logs, mapped to MITRE ATT&CK"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Joshua Pinto" }]
+dependencies = []  # standard library only
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+logsentinel = "logsentinel.cli:main"
+
+[tool.setuptools]
+packages = ["logsentinel"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests", "."]

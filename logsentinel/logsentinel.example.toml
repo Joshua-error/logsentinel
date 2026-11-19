@@ -1,0 +1,22 @@
+# Copy to logsentinel.toml and pass with:  logsentinel --config logsentinel.toml ...
+# Every value is optional; anything left out keeps its default.
+
+# IPs or CIDR ranges that should never raise alerts (your VPN, monitoring, office...)
+allowlist = ["192.0.2.10/32"]
+
+[brute_force]            # LS-001
+threshold = 5            # failed SSH logins from one IP ...
+window_seconds = 60      # ... within this many seconds
+
+[success_after_failures] # LS-002
+min_failures = 3         # failures from the same IP ...
+lookback_seconds = 600   # ... in the 10 minutes before a successful login
+
+[port_scan]              # LS-003
+distinct_ports = 10
+window_seconds = 60
+
+[web_scan]               # LS-004
+distinct_paths = 15
+window_seconds = 120
+statuses = [401, 403, 404]

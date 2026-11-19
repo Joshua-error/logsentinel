@@ -1,0 +1,188 @@
+Nov 18 00:17:01 web-01 CRON[42905]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 00:17:02 web-01 CRON[8296]: pam_unix(cron:session): session closed for user root
+Nov 18 01:17:01 web-01 CRON[2639]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 01:17:02 web-01 CRON[49598]: pam_unix(cron:session): session closed for user root
+Nov 18 02:14:03 web-01 sshd[48823]: Failed password for root from 203.0.113.45 port 32847 ssh2
+Nov 18 02:14:08 web-01 sshd[64774]: Invalid user admin from 203.0.113.45 port 38180
+Nov 18 02:14:08 web-01 sshd[64774]: Failed password for invalid user admin from 203.0.113.45 port 38180 ssh2
+Nov 18 02:14:13 web-01 sshd[37178]: Invalid user ubuntu from 203.0.113.45 port 35164
+Nov 18 02:14:13 web-01 sshd[37178]: Failed password for invalid user ubuntu from 203.0.113.45 port 35164 ssh2
+Nov 18 02:14:17 web-01 sshd[38837]: Invalid user test from 203.0.113.45 port 53700
+Nov 18 02:14:17 web-01 sshd[38837]: Failed password for invalid user test from 203.0.113.45 port 53700 ssh2
+Nov 18 02:14:20 web-01 sshd[4003]: Invalid user oracle from 203.0.113.45 port 34558
+Nov 18 02:14:20 web-01 sshd[4003]: Failed password for invalid user oracle from 203.0.113.45 port 34558 ssh2
+Nov 18 02:14:23 web-01 sshd[6229]: Invalid user postgres from 203.0.113.45 port 48965
+Nov 18 02:14:23 web-01 sshd[6229]: Failed password for invalid user postgres from 203.0.113.45 port 48965 ssh2
+Nov 18 02:14:26 web-01 sshd[25911]: Invalid user pi from 203.0.113.45 port 36619
+Nov 18 02:14:26 web-01 sshd[25911]: Failed password for invalid user pi from 203.0.113.45 port 36619 ssh2
+Nov 18 02:14:30 web-01 sshd[42660]: Invalid user user from 203.0.113.45 port 59714
+Nov 18 02:14:30 web-01 sshd[42660]: Failed password for invalid user user from 203.0.113.45 port 59714 ssh2
+Nov 18 02:14:34 web-01 sshd[25260]: Invalid user git from 203.0.113.45 port 40659
+Nov 18 02:14:34 web-01 sshd[25260]: Failed password for invalid user git from 203.0.113.45 port 40659 ssh2
+Nov 18 02:14:38 web-01 sshd[44920]: Failed password for root from 203.0.113.45 port 43730 ssh2
+Nov 18 02:14:42 web-01 sshd[40920]: Invalid user admin from 203.0.113.45 port 34679
+Nov 18 02:14:42 web-01 sshd[40920]: Failed password for invalid user admin from 203.0.113.45 port 34679 ssh2
+Nov 18 02:14:45 web-01 sshd[11708]: Invalid user ubuntu from 203.0.113.45 port 46043
+Nov 18 02:14:45 web-01 sshd[11708]: Failed password for invalid user ubuntu from 203.0.113.45 port 46043 ssh2
+Nov 18 02:14:50 web-01 sshd[18691]: Invalid user test from 203.0.113.45 port 54867
+Nov 18 02:14:50 web-01 sshd[18691]: Failed password for invalid user test from 203.0.113.45 port 54867 ssh2
+Nov 18 02:14:53 web-01 sshd[56237]: Invalid user oracle from 203.0.113.45 port 51252
+Nov 18 02:14:53 web-01 sshd[56237]: Failed password for invalid user oracle from 203.0.113.45 port 51252 ssh2
+Nov 18 02:14:55 web-01 sshd[54857]: Invalid user postgres from 203.0.113.45 port 45010
+Nov 18 02:14:55 web-01 sshd[54857]: Failed password for invalid user postgres from 203.0.113.45 port 45010 ssh2
+Nov 18 02:14:57 web-01 sshd[27290]: Invalid user pi from 203.0.113.45 port 50673
+Nov 18 02:14:57 web-01 sshd[27290]: Failed password for invalid user pi from 203.0.113.45 port 50673 ssh2
+Nov 18 02:15:01 web-01 sshd[14826]: Invalid user user from 203.0.113.45 port 34337
+Nov 18 02:15:01 web-01 sshd[14826]: Failed password for invalid user user from 203.0.113.45 port 34337 ssh2
+Nov 18 02:15:05 web-01 sshd[43954]: Invalid user git from 203.0.113.45 port 43934
+Nov 18 02:15:05 web-01 sshd[43954]: Failed password for invalid user git from 203.0.113.45 port 43934 ssh2
+Nov 18 02:15:10 web-01 sshd[58978]: Failed password for root from 203.0.113.45 port 55928 ssh2
+Nov 18 02:15:15 web-01 sshd[18359]: Invalid user admin from 203.0.113.45 port 39363
+Nov 18 02:15:15 web-01 sshd[18359]: Failed password for invalid user admin from 203.0.113.45 port 39363 ssh2
+Nov 18 02:15:18 web-01 sshd[49823]: Invalid user ubuntu from 203.0.113.45 port 46162
+Nov 18 02:15:18 web-01 sshd[49823]: Failed password for invalid user ubuntu from 203.0.113.45 port 46162 ssh2
+Nov 18 02:15:22 web-01 sshd[59839]: Invalid user test from 203.0.113.45 port 58077
+Nov 18 02:15:22 web-01 sshd[59839]: Failed password for invalid user test from 203.0.113.45 port 58077 ssh2
+Nov 18 02:15:27 web-01 sshd[15373]: Invalid user oracle from 203.0.113.45 port 53723
+Nov 18 02:15:27 web-01 sshd[15373]: Failed password for invalid user oracle from 203.0.113.45 port 53723 ssh2
+Nov 18 02:15:30 web-01 sshd[33343]: Invalid user postgres from 203.0.113.45 port 63392
+Nov 18 02:15:30 web-01 sshd[33343]: Failed password for invalid user postgres from 203.0.113.45 port 63392 ssh2
+Nov 18 02:15:32 web-01 sshd[57433]: Invalid user pi from 203.0.113.45 port 33087
+Nov 18 02:15:32 web-01 sshd[57433]: Failed password for invalid user pi from 203.0.113.45 port 33087 ssh2
+Nov 18 02:15:34 web-01 sshd[42120]: Invalid user user from 203.0.113.45 port 40016
+Nov 18 02:15:34 web-01 sshd[42120]: Failed password for invalid user user from 203.0.113.45 port 40016 ssh2
+Nov 18 02:15:37 web-01 sshd[40086]: Invalid user git from 203.0.113.45 port 57666
+Nov 18 02:15:37 web-01 sshd[40086]: Failed password for invalid user git from 203.0.113.45 port 57666 ssh2
+Nov 18 02:15:39 web-01 sshd[26009]: Failed password for root from 203.0.113.45 port 55216 ssh2
+Nov 18 02:15:44 web-01 sshd[17476]: Invalid user admin from 203.0.113.45 port 64676
+Nov 18 02:15:44 web-01 sshd[17476]: Failed password for invalid user admin from 203.0.113.45 port 64676 ssh2
+Nov 18 02:15:46 web-01 sshd[45676]: Invalid user ubuntu from 203.0.113.45 port 37507
+Nov 18 02:15:46 web-01 sshd[45676]: Failed password for invalid user ubuntu from 203.0.113.45 port 37507 ssh2
+Nov 18 02:15:50 web-01 sshd[8310]: Invalid user test from 203.0.113.45 port 52293
+Nov 18 02:15:50 web-01 sshd[8310]: Failed password for invalid user test from 203.0.113.45 port 52293 ssh2
+Nov 18 02:15:54 web-01 sshd[11365]: Invalid user oracle from 203.0.113.45 port 58492
+Nov 18 02:15:54 web-01 sshd[11365]: Failed password for invalid user oracle from 203.0.113.45 port 58492 ssh2
+Nov 18 02:15:59 web-01 sshd[63509]: Invalid user postgres from 203.0.113.45 port 30212
+Nov 18 02:15:59 web-01 sshd[63509]: Failed password for invalid user postgres from 203.0.113.45 port 30212 ssh2
+Nov 18 02:16:03 web-01 sshd[50935]: Invalid user pi from 203.0.113.45 port 62806
+Nov 18 02:16:03 web-01 sshd[50935]: Failed password for invalid user pi from 203.0.113.45 port 62806 ssh2
+Nov 18 02:16:06 web-01 sshd[60809]: Invalid user user from 203.0.113.45 port 63271
+Nov 18 02:16:06 web-01 sshd[60809]: Failed password for invalid user user from 203.0.113.45 port 63271 ssh2
+Nov 18 02:16:08 web-01 sshd[56159]: Invalid user git from 203.0.113.45 port 49558
+Nov 18 02:16:08 web-01 sshd[56159]: Failed password for invalid user git from 203.0.113.45 port 49558 ssh2
+Nov 18 02:16:11 web-01 sshd[25504]: Failed password for root from 203.0.113.45 port 40016 ssh2
+Nov 18 02:16:14 web-01 sshd[61194]: Invalid user admin from 203.0.113.45 port 64757
+Nov 18 02:16:14 web-01 sshd[61194]: Failed password for invalid user admin from 203.0.113.45 port 64757 ssh2
+Nov 18 02:16:16 web-01 sshd[33021]: Invalid user ubuntu from 203.0.113.45 port 51243
+Nov 18 02:16:16 web-01 sshd[33021]: Failed password for invalid user ubuntu from 203.0.113.45 port 51243 ssh2
+Nov 18 02:16:18 web-01 sshd[61889]: Invalid user test from 203.0.113.45 port 37331
+Nov 18 02:16:18 web-01 sshd[61889]: Failed password for invalid user test from 203.0.113.45 port 37331 ssh2
+Nov 18 02:16:22 web-01 sshd[16692]: Invalid user oracle from 203.0.113.45 port 50153
+Nov 18 02:16:22 web-01 sshd[16692]: Failed password for invalid user oracle from 203.0.113.45 port 50153 ssh2
+Nov 18 02:16:24 web-01 sshd[58541]: Invalid user postgres from 203.0.113.45 port 45785
+Nov 18 02:16:24 web-01 sshd[58541]: Failed password for invalid user postgres from 203.0.113.45 port 45785 ssh2
+Nov 18 02:16:26 web-01 sshd[48966]: Invalid user pi from 203.0.113.45 port 35613
+Nov 18 02:16:26 web-01 sshd[48966]: Failed password for invalid user pi from 203.0.113.45 port 35613 ssh2
+Nov 18 02:16:31 web-01 sshd[50846]: Invalid user user from 203.0.113.45 port 34535
+Nov 18 02:16:31 web-01 sshd[50846]: Failed password for invalid user user from 203.0.113.45 port 34535 ssh2
+Nov 18 02:16:34 web-01 sshd[44237]: Invalid user git from 203.0.113.45 port 38414
+Nov 18 02:16:34 web-01 sshd[44237]: Failed password for invalid user git from 203.0.113.45 port 38414 ssh2
+Nov 18 02:16:39 web-01 sshd[18370]: Failed password for root from 203.0.113.45 port 40821 ssh2
+Nov 18 02:16:44 web-01 sshd[61877]: Invalid user admin from 203.0.113.45 port 43880
+Nov 18 02:16:44 web-01 sshd[61877]: Failed password for invalid user admin from 203.0.113.45 port 43880 ssh2
+Nov 18 02:16:47 web-01 sshd[27148]: Invalid user ubuntu from 203.0.113.45 port 50428
+Nov 18 02:16:47 web-01 sshd[27148]: Failed password for invalid user ubuntu from 203.0.113.45 port 50428 ssh2
+Nov 18 02:17:01 web-01 CRON[19024]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 02:17:02 web-01 CRON[17049]: pam_unix(cron:session): session closed for user root
+Nov 18 03:17:01 web-01 CRON[15628]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 03:17:02 web-01 CRON[10144]: pam_unix(cron:session): session closed for user root
+Nov 18 03:41:10 web-01 sshd[59957]: Failed password for deploy from 198.51.100.23 port 58711 ssh2
+Nov 18 03:41:18 web-01 sshd[8930]: Failed password for deploy from 198.51.100.23 port 59588 ssh2
+Nov 18 03:41:23 web-01 sshd[5196]: Failed password for deploy from 198.51.100.23 port 44725 ssh2
+Nov 18 03:41:29 web-01 sshd[39555]: Failed password for deploy from 198.51.100.23 port 31378 ssh2
+Nov 18 03:41:37 web-01 sshd[39564]: Failed password for deploy from 198.51.100.23 port 45080 ssh2
+Nov 18 03:41:42 web-01 sshd[5652]: Failed password for deploy from 198.51.100.23 port 30471 ssh2
+Nov 18 03:41:51 web-01 sshd[16003]: Failed password for deploy from 198.51.100.23 port 33858 ssh2
+Nov 18 03:41:55 web-01 sshd[57337]: Failed password for deploy from 198.51.100.23 port 32058 ssh2
+Nov 18 03:42:01 web-01 sshd[34695]: Failed password for deploy from 198.51.100.23 port 34643 ssh2
+Nov 18 03:42:06 web-01 sshd[44842]: Failed password for deploy from 198.51.100.23 port 48250 ssh2
+Nov 18 03:42:13 web-01 sshd[36339]: Failed password for deploy from 198.51.100.23 port 44040 ssh2
+Nov 18 03:42:18 web-01 sshd[16925]: Failed password for deploy from 198.51.100.23 port 60976 ssh2
+Nov 18 03:42:25 web-01 sshd[13478]: Failed password for deploy from 198.51.100.23 port 56677 ssh2
+Nov 18 03:42:29 web-01 sshd[44187]: Failed password for deploy from 198.51.100.23 port 36352 ssh2
+Nov 18 03:42:36 web-01 sshd[28759]: Failed password for deploy from 198.51.100.23 port 53219 ssh2
+Nov 18 03:42:43 web-01 sshd[57612]: Failed password for deploy from 198.51.100.23 port 60606 ssh2
+Nov 18 03:42:52 web-01 sshd[45129]: Failed password for deploy from 198.51.100.23 port 33550 ssh2
+Nov 18 03:43:01 web-01 sshd[4972]: Failed password for deploy from 198.51.100.23 port 36449 ssh2
+Nov 18 03:43:08 web-01 sshd[53467]: Failed password for deploy from 198.51.100.23 port 52236 ssh2
+Nov 18 03:43:12 web-01 sshd[13556]: Failed password for deploy from 198.51.100.23 port 46295 ssh2
+Nov 18 03:43:17 web-01 sshd[10186]: Failed password for deploy from 198.51.100.23 port 59400 ssh2
+Nov 18 03:43:24 web-01 sshd[19254]: Failed password for deploy from 198.51.100.23 port 42025 ssh2
+Nov 18 03:43:31 web-01 sshd[58310]: Failed password for deploy from 198.51.100.23 port 46371 ssh2
+Nov 18 03:43:35 web-01 sshd[53954]: Failed password for deploy from 198.51.100.23 port 59041 ssh2
+Nov 18 03:43:43 web-01 sshd[4315]: Failed password for deploy from 198.51.100.23 port 36416 ssh2
+Nov 18 03:43:52 web-01 sshd[64504]: Failed password for deploy from 198.51.100.23 port 30967 ssh2
+Nov 18 03:43:56 web-01 sshd[11899]: Failed password for deploy from 198.51.100.23 port 45491 ssh2
+Nov 18 03:44:03 web-01 sshd[32546]: Failed password for deploy from 198.51.100.23 port 61826 ssh2
+Nov 18 03:44:08 web-01 sshd[60142]: Failed password for deploy from 198.51.100.23 port 56282 ssh2
+Nov 18 03:44:12 web-01 sshd[25836]: Failed password for deploy from 198.51.100.23 port 40789 ssh2
+Nov 18 03:44:16 web-01 sshd[26586]: Accepted password for deploy from 198.51.100.23 port 47380 ssh2
+Nov 18 03:44:16 web-01 sshd[26586]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Nov 18 04:17:01 web-01 CRON[49265]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 04:17:02 web-01 CRON[7717]: pam_unix(cron:session): session closed for user root
+Nov 18 05:00:30 web-01 sshd[19694]: Failed password for root from 203.0.113.77 port 59819 ssh2
+Nov 18 05:14:30 web-01 sshd[11144]: Failed password for root from 203.0.113.77 port 61894 ssh2
+Nov 18 05:17:01 web-01 CRON[45348]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 05:17:02 web-01 CRON[49540]: pam_unix(cron:session): session closed for user root
+Nov 18 05:26:30 web-01 sshd[15267]: Failed password for root from 203.0.113.77 port 49445 ssh2
+Nov 18 05:37:30 web-01 sshd[50019]: Failed password for root from 203.0.113.77 port 33994 ssh2
+Nov 18 05:50:30 web-01 sshd[4286]: Failed password for root from 203.0.113.77 port 33746 ssh2
+Nov 18 06:04:30 web-01 sshd[61252]: Failed password for root from 203.0.113.77 port 62954 ssh2
+Nov 18 06:16:30 web-01 sshd[63965]: Failed password for root from 203.0.113.77 port 33727 ssh2
+Nov 18 06:17:01 web-01 CRON[59469]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 06:17:02 web-01 CRON[36741]: pam_unix(cron:session): session closed for user root
+Nov 18 06:27:30 web-01 sshd[5490]: Failed password for root from 203.0.113.77 port 42178 ssh2
+Nov 18 07:17:01 web-01 CRON[6697]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 07:17:02 web-01 CRON[39698]: pam_unix(cron:session): session closed for user root
+Nov 18 08:02:11 web-01 sshd[63731]: Accepted publickey for alice from 192.0.2.10 port 51029 ssh2: ED25519 SHA256:q1w2e3r4t5y6u7i8o9p0
+Nov 18 08:02:11 web-01 sshd[63731]: pam_unix(sshd:session): session opened for user alice(uid=1000) by (uid=0)
+Nov 18 08:05:02 web-01 sudo:    alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt update
+Nov 18 08:17:01 web-01 CRON[28651]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 08:17:02 web-01 CRON[3082]: pam_unix(cron:session): session closed for user root
+Nov 18 09:15:02 web-01 sshd[56541]: Failed password for bob from 192.0.2.11 port 51763 ssh2
+Nov 18 09:15:09 web-01 sshd[40565]: Failed password for bob from 192.0.2.11 port 51270 ssh2
+Nov 18 09:15:20 web-01 sshd[53895]: Accepted password for bob from 192.0.2.11 port 48667 ssh2
+Nov 18 09:17:01 web-01 CRON[2952]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 09:17:02 web-01 CRON[7140]: pam_unix(cron:session): session closed for user root
+Nov 18 10:17:01 web-01 CRON[15328]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 10:17:02 web-01 CRON[16247]: pam_unix(cron:session): session closed for user root
+Nov 18 11:17:01 web-01 CRON[34118]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 11:17:02 web-01 CRON[40453]: pam_unix(cron:session): session closed for user root
+Nov 18 12:17:01 web-01 CRON[2739]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 12:17:02 web-01 CRON[37781]: pam_unix(cron:session): session closed for user root
+Nov 18 13:17:01 web-01 CRON[14031]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 13:17:02 web-01 CRON[47925]: pam_unix(cron:session): session closed for user root
+Nov 18 13:30:45 web-01 sshd[7698]: Accepted publickey for alice from 192.0.2.10 port 43039 ssh2: ED25519 SHA256:q1w2e3r4t5y6u7i8o9p0
+Nov 18 13:30:45 web-01 sshd[7698]: pam_unix(sshd:session): session opened for user alice(uid=1000) by (uid=0)
+Nov 18 14:17:01 web-01 CRON[43590]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 14:17:02 web-01 CRON[46962]: pam_unix(cron:session): session closed for user root
+Nov 18 15:17:01 web-01 CRON[36713]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 15:17:02 web-01 CRON[28493]: pam_unix(cron:session): session closed for user root
+Nov 18 16:17:01 web-01 CRON[15446]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 16:17:02 web-01 CRON[30439]: pam_unix(cron:session): session closed for user root
+Nov 18 17:17:01 web-01 CRON[39618]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 17:17:02 web-01 CRON[19231]: pam_unix(cron:session): session closed for user root
+Nov 18 18:17:01 web-01 CRON[54046]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 18:17:02 web-01 CRON[57970]: pam_unix(cron:session): session closed for user root
+Nov 18 18:45:03 web-01 sshd[25898]: Accepted publickey for alice from 192.0.2.10 port 43169 ssh2: ED25519 SHA256:q1w2e3r4t5y6u7i8o9p0
+Nov 18 18:45:03 web-01 sshd[25898]: pam_unix(sshd:session): session opened for user alice(uid=1000) by (uid=0)
+Nov 18 19:17:01 web-01 CRON[1425]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 19:17:02 web-01 CRON[50729]: pam_unix(cron:session): session closed for user root
+Nov 18 20:17:01 web-01 CRON[53810]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 20:17:02 web-01 CRON[11463]: pam_unix(cron:session): session closed for user root
+Nov 18 21:17:01 web-01 CRON[46753]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 21:17:02 web-01 CRON[28696]: pam_unix(cron:session): session closed for user root
+Nov 18 22:17:01 web-01 CRON[23298]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 22:17:02 web-01 CRON[19210]: pam_unix(cron:session): session closed for user root
+Nov 18 23:17:01 web-01 CRON[11189]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 18 23:17:02 web-01 CRON[15110]: pam_unix(cron:session): session closed for user root
